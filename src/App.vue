@@ -1,12 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
+      <button @click="fetch">get</button>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+    methods: {
+        fetch () {
+            console.log(this.$axios)
+            this.$axios.get('/search?keywords=海阔天空').then(res => {
+                console.log(res)
+            })
+        }
+    }
+}
+</script>
 
 <style>
 #app {
